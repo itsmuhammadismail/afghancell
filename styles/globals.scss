@@ -1,7 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+$box-shadow: 0 0 20px 0 rgba(76, 87, 125, 0.2);
+
 html,
 body {
   padding: 0;
@@ -15,8 +19,7 @@ a {
 }
 
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: #181c32;
 }
 
@@ -45,7 +48,5 @@ a {
 }
 
 .box-shadow {
-  -webkit-box-shadow: 0 0 20px 0 rgba(76, 87, 125, 0.2);
-          box-shadow: 0 0 20px 0 rgba(76, 87, 125, 0.2);
+  box-shadow: $box-shadow;
 }
-/*# sourceMappingURL=globals.css.map */
