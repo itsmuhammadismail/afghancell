@@ -9,7 +9,7 @@ import {
 
 const Sidebar = () => {
   return (
-    <aside className="min-h-screen w-[18.75rem] bg-[#f0e9e1] p-8 flex flex-col">
+    <aside className="min-h-screen w-[18.75rem] bg-[#e0e0e0] p-8 flex flex-col">
       <div className="flex justify-center items-center h-[10rem] ">
         <img src="/logo.svg" alt="" className="max-w-[10rem]" />
       </div>
