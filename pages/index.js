@@ -5,7 +5,7 @@ import Chart from "../components/LineChart";
 const Home = () => {
   return (
     <Layout>
-      <div className="flex gap-6">
+      <div className="flex flex-wrap gap-6">
         <Card
           color="#f2416d"
           title="Orders"

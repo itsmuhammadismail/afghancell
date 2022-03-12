@@ -16,7 +16,7 @@ a {
 
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: #181c32;
 }
 
@@ -51,6 +51,6 @@ a {
 
 .box-shadow {
   -webkit-box-shadow: 0 0 20px 0 rgba(76, 87, 125, 0.2);
-          box-shadow: 0 0 20px 0 rgba(76, 87, 125, 0.2);
+  box-shadow: 0 0 20px 0 rgba(76, 87, 125, 0.2);
 }
-/*# sourceMappingURL=globals.css.map */
+
