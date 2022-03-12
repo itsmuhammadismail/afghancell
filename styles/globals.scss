@@ -33,6 +33,10 @@ a {
 
 .h1 {
   @apply text-[1.5rem];
+
+  span {
+    color: white;
+  }
 }
 
 .h2 {

@@ -1,4 +1,5 @@
 import { UnorderedListOutlined } from "@ant-design/icons";
+import CountUp from "react-countup";
 
 const Card = ({ icon, title, value, color }) => {
   return (
@@ -8,7 +9,9 @@ const Card = ({ icon, title, value, color }) => {
     >
       <img src={icon} alt="" className="w-[2.8rem] mb-2" />
       <h4 className="text-white">{title}</h4>
-      <p className="h1 text-white font-semibold">{value}</p>
+      <p className="h1 text-white font-semibold">
+        <CountUp end={value} />
+      </p>
     </div>
   );
 };
