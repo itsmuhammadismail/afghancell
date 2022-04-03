@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 184 127" style="enable-background:new 0 0 184 127;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{opacity:0.3;fill:url(#SVGID_00000140735185801303478140000013806026852735986621_);}
+	.st2{opacity:0.3;fill:url(#SVGID_00000128480416626592319830000016001096147327731353_);}
+	.st3{opacity:0.3;fill:url(#SVGID_00000179616788135215320240000006005197916229846168_);}
+</style>
+<g>
+	<g>
+		
+			<image style="overflow:visible;opacity:0.5;" width="215" height="159" xlink:href="1BDFE1CF.png"  transform="matrix(1 0 0 1 -16 -7)">
+		</image>
+		<g>
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="91.88" y1="-0.481" x2="91.88" y2="129.3763">
+				<stop  offset="0" style="stop-color:#26A9E0"/>
+				<stop  offset="1" style="stop-color:#2B388F"/>
+			</linearGradient>
+			<rect x="-0.2" y="-0.1" class="st0" width="184.2" height="128.1"/>
+		</g>
+	</g>
+	
+		<linearGradient id="SVGID_00000091703620559774186130000017821988309389584554_" gradientUnits="userSpaceOnUse" x1="122.625" y1="127.8176" x2="122.625" y2="32.61">
+		<stop  offset="0" style="stop-color:#2B388F"/>
+		<stop  offset="1" style="stop-color:#26A9E0"/>
+	</linearGradient>
+	<path style="opacity:0.3;fill:url(#SVGID_00000091703620559774186130000017821988309389584554_);" d="M147.7,29.3
+		c-47.8,0-86.5,38.7-86.5,86.5c0,4.2,0.3,8.2,0.9,12.2h22.8c-0.8-4-1.2-8-1.2-12.2c0-35.3,28.7-64,64-64c13.5,0,26,4.2,36.3,11.3
+		V37.2C173,32.1,160.7,29.3,147.7,29.3z"/>
+	
+		<linearGradient id="SVGID_00000013880051208563644230000017099577457304787887_" gradientUnits="userSpaceOnUse" x1="140.52" y1="126.0689" x2="140.52" y2="67.1434">
+		<stop  offset="0" style="stop-color:#2B388F"/>
+		<stop  offset="1" style="stop-color:#26A9E0"/>
+	</linearGradient>
+	<path style="opacity:0.3;fill:url(#SVGID_00000013880051208563644230000017099577457304787887_);" d="M184,80.3V128H98.5
+		c-1-3.9-1.5-8-1.5-12.2c0-28,22.7-50.7,50.7-50.7C162,65.1,174.8,70.9,184,80.3z"/>
+	
+		<linearGradient id="SVGID_00000178202399025449615570000002500190385016769922_" gradientUnits="userSpaceOnUse" x1="42.32" y1="-0.12" x2="42.32" y2="127.6783">
+		<stop  offset="0" style="stop-color:#2B388F"/>
+		<stop  offset="1" style="stop-color:#26A9E0"/>
+	</linearGradient>
+	<path style="opacity:0.3;fill:url(#SVGID_00000178202399025449615570000002500190385016769922_);" d="M15.9,115.8
+		c0,4.1,0.2,8.2,0.6,12.2H-0.2V-0.1h85.1C43.8,22.2,15.9,65.7,15.9,115.8z"/>
+	<g>
+		
+			<text transform="matrix(1 0 0 1 208.9961 114.999)" style="fill:#B3E3F8; font-family:'Montserrat-Regular'; font-size:3.3799px;">CREATE ACCOUNT</text>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 209.0186 58.1143)" style="fill:#FFFFFF; font-family:'Montserrat-Bold'; font-size:11.5407px;">Welcome</text>
+		<text transform="matrix(1 0 0 1 209.0186 68.4727)" style="fill:#FFFFFF; font-family:'Montserrat-Bold'; font-size:11.5407px;">To the website</text>
+	</g>
+	<rect x="209" y="79.9" style="fill:none;" width="123.5" height="16.2"/>
+	<text transform="matrix(1 0 0 1 208.9961 82.4531)"><tspan x="0" y="0" style="fill:#B3E3F8; font-family:'Montserrat-Light'; font-size:3.3799px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dolor enim, </tspan><tspan x="0" y="5.4" style="fill:#B3E3F8; font-family:'Montserrat-Light'; font-size:3.3799px;">bibendum sed justo quis, accumsan eleifend mi. Morbi volutpat, dui </tspan><tspan x="0" y="10.8" style="fill:#B3E3F8; font-family:'Montserrat-Light'; font-size:3.3799px;">feugiat pretium ullamcorper.</tspan></text>
+</g>
+</svg>

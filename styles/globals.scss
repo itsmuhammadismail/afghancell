@@ -55,3 +55,8 @@ a {
 .box-shadow {
   box-shadow: $box-shadow;
 }
+
+button[title="Download CSV"],
+button[title="Filter Table"] {
+  display: none;
+}

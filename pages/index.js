@@ -1,10 +1,11 @@
 import Card from "../components/Card";
 import Layout from "../components/Layout";
 import Chart from "../components/LineChart";
+import OrderHistoryTable from "../components/OrderHistoryTable";
 
 const Home = () => {
   return (
-    <Layout>
+    <Layout title={"Dashboard"}>
       <div className="flex flex-wrap gap-6">
         <Card
           color="#f2416d"
@@ -31,7 +32,10 @@ const Home = () => {
           icon="/icons/spend.svg"
         />
       </div>
-      <div className="mt-8 bg-white w-full h-[25rem] box-shadow rounded-lg p-8">
+      <div className="mt-8 bg-white w-full  rounded-lg ">
+        <OrderHistoryTable />
+      </div>
+      <div className="mt-8 bg-white w-full h-[25rem] box-shadow rounded-lg p-8 mb-8">
         <Chart />
       </div>
     </Layout>
