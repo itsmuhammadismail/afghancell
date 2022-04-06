@@ -9,6 +9,7 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 import GroupIcon from "@mui/icons-material/Group";
 import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/router";
+import getSubUserApi from "../api/get_subusers";
 
 const columns = [
   {
@@ -41,13 +42,13 @@ const options = {
   filterType: "checkbox",
 };
 
-const CustomerTable = () => {
+const SubCustomerTable = (id) => {
   const [data, setData] = useState(null);
   const [cookie] = useCookies(["token"]);
   const router = useRouter();
 
   const fetchData = async () => {
-    const res = await getUsersApi(cookie["token"]);
+    const res = await getSubUserApi(cookie["token"], id["id"]);
     console.log(res);
     let data = [];
     res.map((r) => {
@@ -64,9 +65,6 @@ const CustomerTable = () => {
           <div className="flex gap-4">
             <InfoIcon />
             <SettingsIcon />
-            <ReceiptIcon />
-            <GroupIcon onClick={() => router.push(`/subusers/${r._id}`)} />
-            <CloseIcon />
           </div>
         ),
       });
@@ -77,7 +75,7 @@ const CustomerTable = () => {
   useEffect(() => fetchData(), []);
   return data ? (
     <MUIDataTable
-      title={"Customers"}
+      title={"Sub Customers"}
       data={data}
       columns={columns}
       options={options}
@@ -89,4 +87,4 @@ const CustomerTable = () => {
   );
 };
 
-export default CustomerTable;
+export default SubCustomerTable;

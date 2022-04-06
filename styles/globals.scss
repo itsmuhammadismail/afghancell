@@ -60,3 +60,7 @@ button[title="Download CSV"],
 button[title="Filter Table"] {
   display: none;
 }
+
+.MuiTableCell-paddingCheckbox {
+  display: none !important;
+}

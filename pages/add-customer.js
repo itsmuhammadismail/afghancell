@@ -6,24 +6,32 @@ import OrderHistoryTable from "../components/OrderHistoryTable";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useCookies } from "react-cookie";
+import { useForm } from "react-hook-form";
 
-const ResetPassword = () => {
+const AddCustomer = () => {
   const [cookie, setCookie] = useCookies(["id"]);
   console.log(cookie["id"]);
+  
   return (
-    <Layout title={"Reset Password"}>
+    <Layout title={"Add Customer"}>
       <div className="mt-8 bg-white w-full box-shadow rounded-lg p-8 mb-8">
         <div className="flex flex-col gap-6">
           <TextField
             id="outlined-basic"
-            label="Password"
+            label="Username"
+            variant="outlined"
+            className="max-w-[20rem]"
+          />
+          <TextField
+            id="outlined-basic"
+            label="Phone Number"
             type="password"
             variant="outlined"
             className="max-w-[20rem]"
           />
           <TextField
             id="outlined-basic"
-            label="Confirm Password"
+            label="Password"
             type="password"
             variant="outlined"
             className="max-w-[20rem]"
@@ -37,4 +45,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default AddCustomer;

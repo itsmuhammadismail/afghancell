@@ -1,14 +1,10 @@
 import MUIDataTable from "mui-datatables";
+import { useCookies } from "react-cookie";
+import { useEffect, useState } from "react";
+import { CircularProgress } from "@mui/material";
+import getOrderHistoryApi from "../api/get_order_history";
 
 const columns = [
-  {
-    name: "id",
-    label: "Order ID",
-    options: {
-      filter: true,
-      sort: true,
-    },
-  },
   {
     name: "name",
     label: "User Name",
@@ -41,40 +37,20 @@ const columns = [
       sort: false,
     },
   },
-  {
-    name: "status",
-    label: "Status",
-    options: {
-      filter: true,
-      sort: false,
-    },
-  },
 ];
 
 const data = [
   {
-    id: "13546",
     name: "Khalilrrahman nazari",
     no: "773355216",
     date: "2022-02-08 08:07:37",
     credit: "150",
-    status: (
-      <div className="bg-green-600 text-white flex justify-center items-center p-1">
-        Approved
-      </div>
-    ),
   },
   {
-    id: "13547",
     name: "Khalilrrahman nazari",
     no: "773355216",
     date: "2022-02-08 08:07:37",
     credit: "150",
-    status: (
-      <div className="bg-green-600 text-white flex justify-center items-center p-1">
-        Approved
-      </div>
-    ),
   },
   {
     id: "13548",
@@ -89,40 +65,10 @@ const data = [
     ),
   },
   {
-    id: "13549",
     name: "Khalilrrahman nazari",
     no: "773355216",
     date: "2022-02-08 08:07:37",
     credit: "150",
-    status: (
-      <div className="bg-green-600 text-white flex justify-center items-center p-1">
-        Approved
-      </div>
-    ),
-  },
-  {
-    id: "13510",
-    name: "Khalilrrahman nazari",
-    no: "773355216",
-    date: "2022-02-08 08:07:37",
-    credit: "150",
-    status: (
-      <div className="bg-green-600 text-white flex justify-center items-center p-1">
-        Approved
-      </div>
-    ),
-  },
-  {
-    id: "13511",
-    name: "Khalilrrahman nazari",
-    no: "773355216",
-    date: "2022-02-08 08:07:37",
-    credit: "150",
-    status: (
-      <div className="bg-green-600 text-white flex justify-center items-center p-1">
-        Approved
-      </div>
-    ),
   },
 ];
 
@@ -131,13 +77,39 @@ const options = {
 };
 
 const OrderHistoryTable = () => {
-  return (
+  const [data, setData] = useState(null);
+  const [cookie] = useCookies(["token"]);
+
+  const fetchData = async () => {
+    const res = await getOrderHistoryApi(cookie["token"]);
+    console.log(res);
+    let data = [];
+    res.map((r) => {
+      console.log(r);
+      let datetime = r.createdAt;
+      let [date, time] = datetime.split("T");
+      data.push({
+        name: r.user.username,
+        no: r.user.phone_number,
+        date: `${date} ${time.slice(0, 8)}`,
+        credit: r.credit,
+      });
+    });
+    setData(data);
+  };
+
+  useEffect(() => fetchData(), []);
+  return data ? (
     <MUIDataTable
       title={"Order History"}
       data={data}
       columns={columns}
       options={options}
     />
+  ) : (
+    <div className="h-[20rem] flex justify-center items-center">
+      <CircularProgress />
+    </div>
   );
 };
 
