@@ -1,22 +1,22 @@
-import Card from "../components/Card";
-import CustomerTable from "../components/CustomerTable";
-import Layout from "../components/Layout";
-import Chart from "../components/LineChart";
-import OrderHistoryTable from "../components/OrderHistoryTable";
+import Card from "../../components/Card";
+import CustomerTable from "../../components/CustomerTable";
+import Layout from "../../components/Layout";
+import Chart from "../../components/LineChart";
+import OrderHistoryTable from "../../components/OrderHistoryTable";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
-import { parseCookies } from "../helpers/";
+import { parseCookies } from "../../helpers";
 import { useCookies } from "react-cookie";
 import { useForm } from "react-hook-form";
 import { useRef, useState } from "react";
-import changePasswordApi from "../api/change_password";
+import changePasswordApi from "../../api/change_password";
 import ClearIcon from "@mui/icons-material/Clear";
 import { CircularProgress } from "@mui/material";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-const ResetPassword = () => {
+const UpdateUsernamePassword = () => {
   const ref = useRef(null);
   const {
     register,
@@ -67,7 +67,7 @@ const ResetPassword = () => {
   };
 
   return (
-    <Layout title={"Reset Password"}>
+    <Layout title={"Update Username and Password"}>
       <form
         className="mt-8 bg-white w-full box-shadow rounded-lg p-8 mb-8"
         onSubmit={handleSubmit(onSubmit)}
@@ -84,26 +84,21 @@ const ResetPassword = () => {
           )}
           <TextField
             id="outlined-basic"
+            label="Username"
+            type="text"
+            variant="outlined"
+            className="max-w-[20rem] my-2 "
+            {...register("username")}
+          />
+          <TextField
+            id="outlined-basic"
             label="Password"
             type="password"
             variant="outlined"
             className="max-w-[20rem] my-2 "
-            {...register("password", { required: true })}
+            {...register("password")}
           />
-          {errors.password && (
-            <span className="text-xs text-red-600">Password is required</span>
-          )}
-          <TextField
-            id="outlined-basic"
-            label="Confirm Password"
-            type="password"
-            variant="outlined"
-            className="max-w-[20rem] my-2 "
-            {...register("confirmPassword", { required: true })}
-          />
-          {errors.confirmPassword && (
-            <span className="text-xs text-red-600">Confirm is required</span>
-          )}
+          
           <button
             className="max-w-[20rem] bg-blue-500 h-12 text-white rounded-md my-2 "
             type="submit"
@@ -111,7 +106,7 @@ const ResetPassword = () => {
             {isLoading ? (
               <CircularProgress style={{ color: "white" }} size="20px" />
             ) : (
-              "Reset Password"
+              "Update"
             )}
           </button>
         </div>
@@ -120,4 +115,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default UpdateUsernamePassword;

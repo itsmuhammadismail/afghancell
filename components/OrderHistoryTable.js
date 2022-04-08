@@ -3,6 +3,10 @@ import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import getOrderHistoryApi from "../api/get_order_history";
+import TextField from "@mui/material/TextField";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DatePicker from "@mui/lab/DatePicker";
 
 const columns = [
   {
@@ -79,6 +83,9 @@ const options = {
 const OrderHistoryTable = () => {
   const [data, setData] = useState(null);
   const [cookie] = useCookies(["token"]);
+  const [total, setTotal] = useState(0);
+
+  const [value, setValue] = useState(null);
 
   const fetchData = async () => {
     const res = await getOrderHistoryApi(cookie["token"]);
@@ -88,6 +95,7 @@ const OrderHistoryTable = () => {
       console.log(r);
       let datetime = r.createdAt;
       let [date, time] = datetime.split("T");
+      setTotal((total += +r.credit));
       data.push({
         name: r.user.username,
         no: r.user.phone_number,
@@ -99,16 +107,36 @@ const OrderHistoryTable = () => {
   };
 
   useEffect(() => fetchData(), []);
-  return data ? (
-    <MUIDataTable
-      title={"Order History"}
-      data={data}
-      columns={columns}
-      options={options}
-    />
-  ) : (
-    <div className="h-[20rem] flex justify-center items-center">
-      <CircularProgress />
+  return (
+    <div>
+      <div>
+        <div className="">
+          <span className="font-semibold">Total:</span> {total}
+        </div>
+        <div className="">From</div>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <DatePicker
+            label="Basic example"
+            value={value}
+            onChange={(newValue) => {
+              setValue(newValue);
+            }}
+            renderInput={(params) => <TextField {...params} />}
+          />
+        </LocalizationProvider>
+      </div>
+      {data ? (
+        <MUIDataTable
+          title={"Order History"}
+          data={data}
+          columns={columns}
+          options={options}
+        />
+      ) : (
+        <div className="h-[20rem] flex justify-center items-center">
+          <CircularProgress />
+        </div>
+      )}
     </div>
   );
 };

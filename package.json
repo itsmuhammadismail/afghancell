@@ -13,7 +13,9 @@
     "@emotion/styled": "^11.8.1",
     "@lottiefiles/lottie-player": "^1.5.6",
     "@mui/icons-material": "^5.6.0",
+    "@mui/lab": "^5.0.0-alpha.76",
     "@mui/material": "^5.5.1",
+    "@mui/styled-engine": "^5.6.0",
     "antd": "^4.16.13",
     "axios": "^0.26.1",
     "cookie": "^0.4.2",
@@ -26,6 +28,8 @@
     "react-hook-form": "^7.29.0",
     "recharts": "^2.1.9",
     "recoil": "^0.7.0",
+    "sweetalert2": "^11.4.8",
+    "sweetalert2-react-content": "^4.2.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

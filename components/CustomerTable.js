@@ -9,6 +9,9 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 import GroupIcon from "@mui/icons-material/Group";
 import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/router";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import deleteUserApi from "../api/delete_user";
 
 const columns = [
   {
@@ -46,6 +49,8 @@ const CustomerTable = () => {
   const [cookie] = useCookies(["token"]);
   const router = useRouter();
 
+  const MySwal = withReactContent(Swal);
+
   const fetchData = async () => {
     const res = await getUsersApi(cookie["token"]);
     console.log(res);
@@ -63,10 +68,39 @@ const CustomerTable = () => {
         actions: (
           <div className="flex gap-4">
             <InfoIcon />
-            <SettingsIcon />
+            <SettingsIcon
+              onClick={() => router.push(`/update-username-password/${r._id}`)}
+            />
             <ReceiptIcon />
             <GroupIcon onClick={() => router.push(`/subusers/${r._id}`)} />
-            <CloseIcon />
+            <CloseIcon
+              onClick={async () =>
+                Swal.fire({
+                  title: "Delete User",
+                  text: "Are you sure you want to delete this user?",
+                  showCancelButton: true,
+                  confirmButtonText: "Delete",
+                }).then(async (result) => {
+                  /* Read more about isConfirmed, isDenied below */
+                  if (result.isConfirmed) {
+                    const res = await deleteUserApi(cookie["token"], r._id);
+                    if (res.status === "success") {
+                      Swal.fire({
+                        icon: "success",
+                        text: "User Deleted Successfully",
+                      });
+                      setData(null);
+                      fetchData();
+                    } else {
+                      Swal.fire({
+                        icon: "error",
+                        text: "Something went wrong",
+                      });
+                    }
+                  }
+                })
+              }
+            />
           </div>
         ),
       });
