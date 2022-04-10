@@ -4,7 +4,7 @@ import OrderHistoryTable from "../components/OrderHistoryTable";
 const OrdersHistory = () => {
   return (
     <Layout title={"Orders History"}>
-      <div className="mt-8 bg-white w-full  rounded-lg ">
+      <div className="mt-8 w-full  rounded-lg ">
         <OrderHistoryTable />
       </div>
     </Layout>

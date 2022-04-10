@@ -36,7 +36,6 @@ const Login = () => {
   const handleLogin = async (username, password) => {
     setIsLoading(true);
     const res = await loginApi(username, password);
-    console.log(res);
 
     if ("token" in res) {
       localStorage.setItem("token", res.token);
@@ -63,25 +62,26 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     handleLogin(data.username, data.password);
-    console.log(data.username);
   };
 
   return (
     <form className="flex w-screen h-screen" onSubmit={handleSubmit(onSubmit)}>
       <ACHead />
-      <div className="flex-1 flex justify-evenly items-center">
+      <div className="flex-1 flex justify-evenly items-center ">
         {/* <img src="/login.svg" alt="" className="h-full p-[5rem]" /> */}
-        <lottie-player
-          id="firstLottie"
-          ref={ref}
-          autoplay
-          loop
-          mode="normal"
-          src="https://assets7.lottiefiles.com/private_files/lf30_fw6h59eu.json"
-          style={{ width: "500px", height: "500px", paddingp: "5rem" }}
-          className=" p-[5rem] "
-        ></lottie-player>
-        <div className="w-[30rem] bg-[#ececec] flex flex-col justify-center items-center shadow-lg py-[6rem] rounded-lg">
+        <div className="hidden lg:flex">
+          <lottie-player
+            id="firstLottie"
+            ref={ref}
+            autoplay
+            loop
+            mode="normal"
+            src="https://assets7.lottiefiles.com/private_files/lf30_fw6h59eu.json"
+            style={{ width: "500px", height: "500px", paddingp: "5rem" }}
+            className=" p-[5rem] "
+          ></lottie-player>
+        </div>
+        <div className="w-full md:w-[30rem] bg-[#ececec] flex flex-col justify-center items-center shadow-lg py-[6rem] rounded-lg mx-6 lg:mx-0">
           <img src="/logo.svg" alt="" className="w-[10rem]" />
           {incorrect && (
             <div

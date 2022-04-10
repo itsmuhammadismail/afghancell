@@ -1,11 +1,10 @@
 import route from "./route";
 import { useCookies } from "react-cookie";
 
-const getSubUserApi = async (token, id) => {
+const getTotalOrdersApi = async (token) => {
   let header = {
     Authorization: `Bearer ${token}`,
   };
-
 
   let requestOptions = {
     method: "GET",
@@ -13,11 +12,11 @@ const getSubUserApi = async (token, id) => {
     headers: header,
   };
 
-  const res = await fetch(`${route}getsubuser/${id}`, requestOptions)
+  const res = await fetch(`${route}gettotalorder`, requestOptions)
     .then((response) => response.json())
     .catch((error) => console.log("error", error));
 
   return res;
 };
 
-export default getSubUserApi;
+export default getTotalOrdersApi;

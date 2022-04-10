@@ -40,7 +40,6 @@ const ResetPassword = () => {
       cookie["id"],
       password
     );
-    console.log(res);
 
     if (res.status === "success") {
       setIsLoading(false);

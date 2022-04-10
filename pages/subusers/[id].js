@@ -6,7 +6,6 @@ import SubCustomerTable from "../../components/SubCustomerTable";
 const SubCustomers = ({}) => {
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
   return (
     <Layout title={"Sub Customers"}>
       <div className="mt-8 bg-white w-full  rounded-lg ">

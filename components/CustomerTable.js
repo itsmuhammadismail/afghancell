@@ -53,11 +53,8 @@ const CustomerTable = () => {
 
   const fetchData = async () => {
     const res = await getUsersApi(cookie["token"]);
-    console.log(res);
     let data = [];
     res.map((r) => {
-      console.log(r);
-
       data.push({
         name: r.username,
         account: (
@@ -67,11 +64,15 @@ const CustomerTable = () => {
         ),
         actions: (
           <div className="flex gap-4">
-            <InfoIcon />
+            <InfoIcon
+              onClick={() => router.push(`/customer-details/${r._id}`)}
+            />
             <SettingsIcon
               onClick={() => router.push(`/update-username-password/${r._id}`)}
             />
-            <ReceiptIcon />
+            <ReceiptIcon
+              onClick={() => router.push(`/transaction-history/${r._id}`)}
+            />
             <GroupIcon onClick={() => router.push(`/subusers/${r._id}`)} />
             <CloseIcon
               onClick={async () =>

@@ -1,8 +1,8 @@
 import route from "./route";
 
-const changePasswordApi = async (token, id, password) => {
+const updateAmountApi = async (token, id, amount) => {
   var urlencoded = new URLSearchParams();
-  urlencoded.append("password", password);
+  urlencoded.append("amount", amount);
 
   let header = {
     Authorization: `Bearer ${token}`,
@@ -15,11 +15,11 @@ const changePasswordApi = async (token, id, password) => {
     body: urlencoded,
   };
 
-  const res = await fetch(`${route}updateuserpassword/${id}`, requestOptions)
+  const res = await fetch(`${route}changeuseramount/${id}`, requestOptions)
     .then((response) => response.json())
     .catch((error) => console.log("error", error));
 
   return res;
 };
 
-export default changePasswordApi;
+export default updateAmountApi;

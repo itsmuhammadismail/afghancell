@@ -49,11 +49,8 @@ const SubCustomerTable = (id) => {
 
   const fetchData = async () => {
     const res = await getSubUserApi(cookie["token"], id["id"]);
-    console.log(res);
     let data = [];
     res.map((r) => {
-      console.log(r);
-
       data.push({
         name: r.username,
         account: (
@@ -63,8 +60,12 @@ const SubCustomerTable = (id) => {
         ),
         actions: (
           <div className="flex gap-4">
-            <InfoIcon />
-            <SettingsIcon />
+            <InfoIcon
+              onClick={() => router.push(`/customer-details/${r._id}`)}
+            />
+            <SettingsIcon
+              onClick={() => router.push(`/update-username-password/${r._id}`)}
+            />
           </div>
         ),
       });

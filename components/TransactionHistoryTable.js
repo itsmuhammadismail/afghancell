@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
+import getTransactionHistoryApi from "../api/get_transaction_history";
 
 const columns = [
   {
@@ -80,7 +81,7 @@ const options = {
   filterType: "checkbox",
 };
 
-const OrderHistoryTable = () => {
+const TransactionHistoryTable = ({ id }) => {
   const [data, setData] = useState(null);
   const [cookie] = useCookies(["token"]);
   const [total, setTotal] = useState(0);
@@ -88,7 +89,7 @@ const OrderHistoryTable = () => {
   const [value, setValue] = useState(null);
 
   const fetchData = async () => {
-    const res = await getOrderHistoryApi(cookie["token"]);
+    const res = await getTransactionHistoryApi(cookie["token"], id);
     let data = [];
     res.map((r) => {
       let datetime = r.createdAt;
@@ -107,14 +108,9 @@ const OrderHistoryTable = () => {
   useEffect(() => fetchData(), []);
   return (
     <div>
-      <div>
-        <div className="pb-8">
-          <span className="font-semibold">Total:</span> {total}
-        </div>
-      </div>
       {data ? (
         <MUIDataTable
-          title={"Order History"}
+          title={"Transaction History"}
           data={data}
           columns={columns}
           options={options}
@@ -128,4 +124,4 @@ const OrderHistoryTable = () => {
   );
 };
 
-export default OrderHistoryTable;
+export default TransactionHistoryTable;

@@ -15,8 +15,9 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { CircularProgress } from "@mui/material";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import updateUsernamePasswordApi from "../../api/update_username_password";
 
-const UpdateUsernamePassword = () => {
+const UpdateUsernamePassword = ({}) => {
   const ref = useRef(null);
   const {
     register,
@@ -25,6 +26,7 @@ const UpdateUsernamePassword = () => {
     formState: { errors },
   } = useForm();
   const router = useRouter();
+  const { id } = router.query;
 
   const [cookie, setCookie] = useCookies(["token"]);
 
@@ -33,19 +35,19 @@ const UpdateUsernamePassword = () => {
 
   const MySwal = withReactContent(Swal);
 
-  const handleLogin = async (password) => {
+  const handleLogin = async (username, password) => {
     setIsLoading(true);
-    const res = await changePasswordApi(
+    const res = await updateUsernamePasswordApi(
       cookie["token"],
-      cookie["id"],
+      id,
+      username,
       password
     );
-    console.log(res);
 
     if (res.status === "success") {
       setIsLoading(false);
       await MySwal.fire({
-        title: "Password Changed Successfully",
+        title: "Username and Password Changed Successfully",
         icon: "success",
       });
     } else {
@@ -58,12 +60,8 @@ const UpdateUsernamePassword = () => {
   };
 
   const onSubmit = async (data) => {
-    if (data.password !== data.confirmPassword) {
-      setIncorrect(true);
-      setTimeout(() => {
-        setIncorrect(false);
-      }, 2000);
-    } else handleLogin(data.password);
+    if (data.username !== "" && data.password !== "")
+      handleLogin(data.username, data.password);
   };
 
   return (
@@ -73,15 +71,6 @@ const UpdateUsernamePassword = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex flex-col ">
-          {incorrect && (
-            <div
-              className="flex w-[20rem] justify-between  items-center border-2 border-red-500 px-3 py-2 text-red-500 rounded-md mb-3"
-              onClick={() => setIncorrect(false)}
-            >
-              <small>Password and Confirm Password not match</small>
-              <ClearIcon fontSize="small" className="cursor-pointer" />
-            </div>
-          )}
           <TextField
             id="outlined-basic"
             label="Username"
@@ -98,7 +87,7 @@ const UpdateUsernamePassword = () => {
             className="max-w-[20rem] my-2 "
             {...register("password")}
           />
-          
+
           <button
             className="max-w-[20rem] bg-blue-500 h-12 text-white rounded-md my-2 "
             type="submit"
